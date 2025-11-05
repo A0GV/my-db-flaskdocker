@@ -19,7 +19,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/a0gv/my-db-flaskdocker
+  IMAGE_NAME: ghcr.io/a0gv/my-db-flaskdocker/my-db
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -47,6 +47,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
